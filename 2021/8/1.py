@@ -16,13 +16,10 @@ class Display:
                 one = mapping
                 self.map[1] = self._to_set(mapping)
             elif len(mapping) == 3:
-                seven = mapping
                 self.map[7] = self._to_set(mapping)
             elif len(mapping) == 4:
-                four = mapping
                 self.map[4] = self._to_set(mapping)
             elif len(mapping) == 7:
-                eight = mapping
                 self.map[8] = self._to_set(mapping)
             elif len(mapping) == 5:
                 unknown_5.append(self._to_set(mapping))
