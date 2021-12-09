@@ -31,7 +31,8 @@ class Map:
             for col in range(self.dim_cols):
                 point = self.map[row][col]
                 neighbours = self.neighbours(row,col)
-                neighbour_heights = list(map(lambda p: self.map[p[0]][p[1]], neighbours))
+                #neighbour_heights = list(map(lambda p: self.map[p[0]][p[1]], neighbours))
+                neighbour_heights = [ self.map[p[0]][p[1]] for p in neighbours ]
                 if point < min(neighbour_heights):
                     lowspots.append([row,col])            
         return lowspots
