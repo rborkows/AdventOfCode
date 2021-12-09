@@ -36,13 +36,13 @@ class Map:
                     lowspots.append([row,col])            
         return lowspots
 
-    def flood_basin(self, row, col, size = 0):
+    def flood_basin(self, row, col):
         if self.map[row][col] == 9:
             return 0
         self.map[row][col] = 9
         ret = 1
         for n in self.neighbours(row, col):
-            ret += self.flood_basin(n[0], n[1], size+1)
+            ret += self.flood_basin(n[0], n[1])
         return ret
 
     def neighbours(self, row,col):
