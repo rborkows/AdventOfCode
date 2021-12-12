@@ -58,7 +58,6 @@ def walk2(node, specialsmall, paths):
         else:
             nextnode = p1
         paths_from_here = walk2(nextnode, specialsmall, nextpaths)
-        tmp = []
         for p in paths_from_here:
             p.append(nextnode)
             solution.append(p)
