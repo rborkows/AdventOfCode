@@ -1,5 +1,4 @@
 import sys
-import time
 
 sys.path.append("AdventOfCode/lib")
 import adventutil
@@ -68,17 +67,20 @@ def walk2(node, specialsmall, paths):
 
 print("part 1", walk("start", input))
 
-smallcaves = set()
-for path in input:
-    ca = path.split("-")
-    for cave in ca:
-        if cave != 'start' and cave != 'end' and cave[0].islower():
-            smallcaves.add(cave)
 
-unique_paths = set()
-for smallcave in smallcaves:
-    paths=walk2("start", smallcave, input)
-    for path in paths:
-        unique_paths.add(":".join(path))
+def part2():
+    smallcaves = set()
+    for path in input:
+        ca = path.split("-")
+        for cave in ca:
+            if cave != 'start' and cave != 'end' and cave[0].islower():
+                smallcaves.add(cave)
 
-print("part 2", len(unique_paths))
+    unique_paths = set()
+    for smallcave in smallcaves:
+        paths=walk2("start", smallcave, input)
+        for path in paths:
+            unique_paths.add(":".join(path))
+    return len(unique_paths)
+
+print("part 2", part2())
