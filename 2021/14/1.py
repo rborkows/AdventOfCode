@@ -15,9 +15,8 @@ def cycle(pairs, rules, elements):
         pairs[rules[rule]+rule[1]] += prev_pairs[rule]    
 
 polymer = input[0]
-rules_a = input[2:]
 rules={}
-for rule in rules_a:
+for rule in input[2:]:
     k, _, v = rule.split()
     rules[k] = v
 
