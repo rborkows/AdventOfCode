@@ -25,10 +25,6 @@ def rotate(str, n):
 pat = "([a-z\-]+)(\d+)\[([a-z]+)\]"
 prog = re.compile(pat)
 
-# 
-# 
-# print(checksum(roomchars))
-
 part1 = 0
 part2 = 0
 for line in input:
