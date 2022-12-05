@@ -18,7 +18,7 @@ class InputFetcher:
             if not os.path.exists(self.inputfile):
                 print("Fetching input from web")
                 url = f"https://adventofcode.com/{self.year}/day/{self.day}/input"
-                r = requests.get(url, cookies = session.cookie)
+                r = requests.get(url, cookies = session.cookie, headers = {"User-Agent": "github.com/rborkows/AdventOfCode Robert Borkowski"})
                 with open(self.inputfile, "wb") as f:
                     f.write(r.content)
                 
