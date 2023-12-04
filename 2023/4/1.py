@@ -11,7 +11,6 @@ input = fetcher.fetch(rstrip=True, commasplit=False, small=False)
 
 class Card:
     def __init__(self, line) -> None:
-        #m = re.match(r"^Card\s+(\d+)", line)
         self.copies = 1
         line = re.sub(" +", " ", line)
         a = line.split(' ')
@@ -19,7 +18,7 @@ class Card:
         a=a[2:]
         self.haves = []
         self.winners = []
-        self._score = None
+        self._winner_count = None
         while a[0].isnumeric():
             self.winners.append(int(a.pop(0)))
         a.pop(0)
@@ -27,22 +26,20 @@ class Card:
             self.haves.append(int(a.pop(0)))
   
     def winner_count(self):
-        winners = 0
+        if self._winner_count != None:
+            return self._winner_count
+        self._winner_count = 0
         for have in self.haves:
             if have in self.winners:
-                winners += 1
-        return(winners)
+                self._winner_count += 1
+        return(self._winner_count)
 
-    def score(self):
-        if self._score != None:
-            return self._score
-        
+    def score(self):       
         winners = self.winner_count()
         if winners == 0:
-            self._score = 0
+            return 0
         else:
-            self._score = 2**(winners-1)
-        return self._score
+            return 2**(winners-1)
     
     def addcopy(self):
         self.copies += 1
